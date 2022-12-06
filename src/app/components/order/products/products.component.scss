@@ -1,0 +1,17 @@
+.options {
+    display: flex;
+    justify-content: space-evenly;
+    
+    .option{
+        text-align: center;
+        width: 10rem;
+        .option-title{
+            border-bottom: 1px solid lightgray;
+            margin-bottom: 1.2rem;
+        }
+    }
+
+    .btn {
+        border-radius: 0;
+    }
+}

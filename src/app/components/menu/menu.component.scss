@@ -1,0 +1,41 @@
+body {
+    margin: 0;
+    padding: 0;
+}
+nav {
+    height: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+        background: #7c06a366;
+    .logo {
+        float: left;
+        width: 20vh;
+        
+        img {
+            max-width: 6rem;
+        }
+    }
+
+    .elements {
+        float: right;
+        text-align: right;
+        width: 80vh;
+
+        ul{
+
+            height: auto;
+            li {
+                list-style: none;
+                display: inline;           
+                margin: 0 10px 0 10px;                
+                cursor: pointer;
+            }
+    
+            li:hover {
+                color: white;
+                background: #af5bca38;
+            }
+        }
+    }
+}

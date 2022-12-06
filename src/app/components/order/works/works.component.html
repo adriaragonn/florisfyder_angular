@@ -1,0 +1,3 @@
+<div class="works">
+    <a class="btn btn-info" *ngFor="let work of works" [routerLink]="[{outlets: {works: ['options', work.id]}}]">{{work.work}}</a>
+</div>

@@ -1,0 +1,12 @@
+<div class="options">
+    <div *ngFor="let option of options" class="option">
+        <div class="option-title">
+            {{option.work}}
+        </div>
+        <div class="sub-options" *ngFor="let work of option.options">
+            <a class="btn btn-info"  (click)="hasOptions(work.id, work.work)">{{work.work}}</a>
+            <div class="rama-{{work.work}}">
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,8 @@
+<div class="options">
+    <div *ngFor="let product of products" class="option">
+        <div class="option-title btn btn-info" (click)="hasColors(product.id, product.product)">
+            {{product.product}}
+        </div>
+        <div class="colors colors-{{product.product}}"></div>
+    </div>
+</div>
