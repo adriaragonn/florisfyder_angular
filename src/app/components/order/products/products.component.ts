@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { OrderService } from 'src/app/services/order.service';
 import { WorksService } from 'src/app/services/works.service';
 
 @Component({
@@ -10,11 +11,13 @@ import { WorksService } from 'src/app/services/works.service';
 export class ProductsComponent implements OnInit {
 
   products: any;
+  option_selected: any = false
 
   constructor(
     private _activatedRoute: ActivatedRoute,
     private _router: Router,
-    private _workService: WorksService
+    private _workService: WorksService,
+    private _orderService: OrderService
   ) { }
 
   ngOnInit(): void {
@@ -22,24 +25,31 @@ export class ProductsComponent implements OnInit {
     this._workService.getProducts(id).subscribe(
       (res:any) => {
         this.products = res.data
-        console.log(this.products)
       }
     )
   }
 
   hasColors(id:any, color: string){
-    let product_div:any = document.querySelector(`.colors-${color}`)
+    let product_div:any = document.querySelectorAll(`.colors-${color}`)
     let colors = this.products.filter((el:any) => el.id == id)
-    let template:any ='';
-    if(colors[0].colors.length > 0){
-      colors[0].colors.forEach((el:any) => {
-        template += `
-        <a class="btn color" style="background: ${el.code}; padding: 0.8rem;width: 1.8rem;border: 1px solid black; margin: 0.3rem"></a>
-        `
-      });
-      product_div.innerHTML = template
-    }
+    product_div.forEach((el:any) => {
+      el.className ='colors  colors-visible'
+    });
+    this.products.forEach((el:any) => {
+      if(el.colors.length == 0 && el.id == id){
+        this.selectColour(el.id)
+      }
+    });
+  }
 
+  selectColour(product_id: any, colour_id?:any){
+    this.option_selected = true
+    this._orderService.addColor(product_id, colour_id)
+  }
+
+  nextStep(){
+    let id:any = this._activatedRoute.snapshot.paramMap.get('id')
+    this._router.navigateByUrl(`nuevo-pedido/(works:quantities/${id})`)
   }
 
 }

@@ -23,11 +23,11 @@ export class GenericService {
     return this._http.get(this.url+'days', {headers:headers})
    }
 
-   searchClient(string: string){
+   searchClient(name: string){
     let headers = new HttpHeaders()
                       .set('Content-Type', 'application/json')
 
-    return this._http.get(`${this.url}clients?search=${string}`)
+    return this._http.get(`${this.url}clients?search=${name}`)
    }
 
 }

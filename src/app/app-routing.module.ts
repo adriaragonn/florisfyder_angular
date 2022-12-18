@@ -4,6 +4,7 @@ import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { OptionsComponent } from './components/order/options/options.component';
 import { OrderComponent } from './components/order/order.component';
 import { ProductsComponent } from './components/order/products/products.component';
+import { QuantitiesComponent } from './components/order/quantities/quantities.component';
 import { WorksComponent } from './components/order/works/works.component';
 
 const routes: Routes = [
@@ -29,6 +30,11 @@ const routes: Routes = [
         path: 'products/:id',
         outlet: 'works',
         component: ProductsComponent
+      },
+      {
+        path: 'quantities/:id',
+        outlet: 'works',
+        component: QuantitiesComponent
       }
     ]
   }

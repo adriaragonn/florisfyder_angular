@@ -3,3 +3,11 @@ body {
     margin: 0;
     padding: 0;
 }
+
+.transparency {
+    background: #0dcaf04a;
+    border: 0px;
+    span {
+        opacity: 70%;
+    }
+}

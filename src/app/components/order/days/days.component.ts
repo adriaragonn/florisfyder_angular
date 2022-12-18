@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { GenericService } from 'src/app/services/generic.service';
+import { OrderService } from 'src/app/services/order.service';
 
 @Component({
   selector: 'app-days',
@@ -11,7 +12,8 @@ export class DaysComponent implements OnInit {
   days: any;
 
   constructor(
-    private _genericService: GenericService
+    private _genericService: GenericService,
+    private _orderService: OrderService
   ) {}
 
   ngOnInit(): void {
@@ -22,7 +24,7 @@ export class DaysComponent implements OnInit {
     )
   }
 
-  selectDay(id:any){
+  selectDay(id:any, option:any){
     let btn = document.querySelector(`.btn${id}`)
 
     for(var i = 0; this.days.length > i; i++){
@@ -35,6 +37,7 @@ export class DaysComponent implements OnInit {
         btn?.classList.add('btn-success')
       }
     }
-  }
 
+    this._orderService.addDay(id)
+  }
 }

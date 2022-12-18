@@ -14,6 +14,7 @@
             .btn {
                 margin-top: 0.2rem;
                 border-radius: 0;
+                border: 0px;
             }
             .rama {
                 display: flex;
@@ -22,3 +23,16 @@
         }  
     } 
 }
+
+.btn-next {
+    position: fixed;
+    bottom: 0px;
+    width: 100%;
+    
+    .btn {
+        font-size: 1.2rem;
+        font-weight: bold;
+        width: 100%;
+    }
+}
+

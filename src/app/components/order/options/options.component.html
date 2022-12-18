@@ -4,9 +4,13 @@
             {{option.work}}
         </div>
         <div class="sub-options" *ngFor="let work of option.options">
-            <a class="btn btn-info"  (click)="hasOptions(work.id, work.work)">{{work.work}}</a>
-            <div class="rama-{{work.work}}">
+            <a class="btn btn-info sub-option-{{work.id}}"  (click)="hasOptions(work.id, work.work, option.work)"><span>{{work.work}}</span></a>
+            <div class="rama-{{work.id}}" style="display: none;">
+                <a *ngFor="let optionWork of options_work" class="btn btn-secondary btn-rama-{{optionWork.id}}" style="font-size: 0.8rem;width: 75%;margin-left: 25%;margin-top: 0.4rem;" (click)="hasOptions(optionWork.id, optionWork.work, option.work)">{{optionWork.work}}</a>
             </div>
         </div>
+    </div>
+    <div class="btn-next" *ngIf="options">
+        <a class="btn btn-info" (click)="nextStep()" *ngIf="order_options.length ==  options.length">Siguiente paso</a>
     </div>
 </div>
