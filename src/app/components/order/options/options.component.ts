@@ -14,7 +14,8 @@ export class OptionsComponent implements OnInit {
   subOptions: any = [];
   selectOptions: any = [];
   options_work: any = [];
-  order_options: any = []
+  order_options: any = [];
+  options_resume: any = [];
 
   constructor(
     private _activatedRoute: ActivatedRoute,
@@ -27,8 +28,8 @@ export class OptionsComponent implements OnInit {
     let id:any = this._activatedRoute.snapshot.paramMap.get('id')
     this._workService.getOptions(id).subscribe(
       (res:any) => {
-        console.log(res.data)
         if(res.data[0].options.length == 0){
+          this.addOption([],id)
           this._router.navigateByUrl(`nuevo-pedido/(works:products/${id})`)
         }else {
           this.options = res.data[0].options
@@ -61,11 +62,12 @@ export class OptionsComponent implements OnInit {
     )
   }
 
-  addOption(options:any, work_id: any){
-    this._orderService.addOption(options, work_id)
+  addOption(options?:any, work_id?: any){
+    this._orderService.addOption(options, work_id, this.options_resume)
   }
 
   nextStep(){
+    
     let id:any = this._activatedRoute.snapshot.paramMap.get('id')
     this.addOption(this.order_options, id)
     this._router.navigateByUrl(`nuevo-pedido/(works:products/${id})`)
@@ -97,6 +99,7 @@ export class OptionsComponent implements OnInit {
     let work = this.options.filter((el: any) => el.work == option.work)[0].options
     if(this.order_options.length == 0){
       this.order_options.push(option.id)
+      this.options_resume.push(option)
     }else if(this.order_options.length > 0 ){
       work.forEach((el: any) => {
         if(this.order_options.includes(el.id)){
@@ -110,6 +113,7 @@ export class OptionsComponent implements OnInit {
         }
       });
       this.order_options.push(option.id)
+      this.options_resume.push(option)
     }
   }
 

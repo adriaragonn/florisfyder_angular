@@ -15,6 +15,7 @@ import { WorksComponent } from './components/order/works/works.component';
 import { ProductsComponent } from './components/order/products/products.component';
 import { OptionsComponent } from './components/order/options/options.component';
 import { QuantitiesComponent } from './components/order/quantities/quantities.component';
+import { ResumeComponent } from './components/order/resume/resume.component';
 
 @NgModule({
   declarations: [
@@ -28,7 +29,8 @@ import { QuantitiesComponent } from './components/order/quantities/quantities.co
     WorksComponent,
     ProductsComponent,
     OptionsComponent,
-    QuantitiesComponent
+    QuantitiesComponent,
+    ResumeComponent
   ],
   imports: [
     BrowserModule,

@@ -24,7 +24,8 @@ export class DaysComponent implements OnInit {
     )
   }
 
-  selectDay(id:any, option:any){
+  selectDay(id:any, date:string){
+    console.log(date)
     let btn = document.querySelector(`.btn${id}`)
 
     for(var i = 0; this.days.length > i; i++){
@@ -38,6 +39,6 @@ export class DaysComponent implements OnInit {
       }
     }
 
-    this._orderService.addDay(id)
+    this._orderService.addDay(id, date)
   }
 }

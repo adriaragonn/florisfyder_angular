@@ -44,4 +44,18 @@ export class WorksService {
     return this._http.get(`${this.url}works/${id}/products`, {headers: headers})
   }
 
+  getQuantities(id: any){
+    let headers = new HttpHeaders()
+                      .set('Content-Type', 'application/json')
+
+    return this._http.get(`${this.url}works/${id}/quantities`, {headers: headers})
+  }
+
+  confirmOrder(order: any){
+    let headers = new HttpHeaders()
+                      .set('Content-Type', 'application/json')
+
+    return this._http.post(`${this.url}orders`, order, {headers: headers})
+  }
+
 }

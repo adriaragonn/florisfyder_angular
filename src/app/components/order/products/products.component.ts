@@ -24,7 +24,12 @@ export class ProductsComponent implements OnInit {
     let id = this._activatedRoute.snapshot.paramMap.get('id')
     this._workService.getProducts(id).subscribe(
       (res:any) => {
-        this.products = res.data
+        console.log(res.data)
+        if(res.data.length == 0){
+          this.nextStep()
+        }else{
+          this.products = res.data
+        }
       }
     )
   }
