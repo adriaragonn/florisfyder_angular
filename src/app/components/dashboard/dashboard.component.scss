@@ -4,3 +4,21 @@
     font-weight: bold;
     padding: 1rem;
 }
+
+.add_product {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    border-radius: 50px;
+    box-shadow: 5px 4px 14px 2px black;
+    svg {
+        color: #222121;
+        width: 4rem;
+    }
+}
+
+.add_product :hover {
+    cursor: pointer;
+    border-radius: 50px;
+    box-shadow: -5px -4px 14px 2px black;
+}
