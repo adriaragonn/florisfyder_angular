@@ -22,3 +22,12 @@
     border-radius: 50px;
     box-shadow: -5px -4px 14px 2px black;
 }
+
+.cards {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    .card {
+        margin: 1rem 0 1rem 0;
+    }
+}

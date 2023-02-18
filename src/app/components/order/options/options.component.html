@@ -1,4 +1,4 @@
-<div class="options">
+<!--<div class="options">
     <div *ngFor="let option of options" class="option">
         <div class="option-title">
             {{option.work}}
@@ -10,7 +10,16 @@
             </div>
         </div>
     </div>
-    <div class="btn-next" *ngIf="options">
-        <a class="btn btn-info" (click)="nextStep()" *ngIf="order_options.length ==  options.length">Siguiente paso</a>
+</div>
+-->
+
+<div class="options">
+    <div class="option" *ngFor="let option of options">
+        <div class="option-title">
+            {{option.work}}
+        </div>
+        <select class="form-select" multiple name="{{option.work}}" id="{{option.work}}">
+            <option  value="{{work.work}}" *ngFor="let work of option.options">{{work.work}}</option>
+        </select>
     </div>
 </div>

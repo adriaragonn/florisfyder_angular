@@ -1,49 +1,12 @@
 .options {
-    display: flex;
-    justify-content: space-evenly;
-    
-    .option{
-        text-align: center;
-        width: 10rem;
-        .option-title{
-            border-bottom: 1px solid lightgray;
-            margin-bottom: 1.2rem;
-        }
-    }
-
-    .colors {
-        display: flex;
-        flex-wrap: wrap;
-        justify-content: space-evenly;
-        .colors-hidden {
-            display: none;
-        }
-        .colors-visible {
-            display: flex;
-        }
-        button {
-            border-radius: 0.5rem;
-        }
-    }
-
-    .btn {
-        border-radius: 0;
-    }
 
     .ifQuantities{
         display: flex;
-        justify-content: space-evenly;
-    }
-}
-
-.btn-next {
-    position: fixed;
-    bottom: 0px;
-    width: 100%;
+        flex-wrap: wrap;
+        justify-content: space-around;
     
-    .btn {
-        font-size: 1.2rem;
-        font-weight: bold;
-        width: 100%;
+        .btn {
+            margin: .2rem;
+        }
     }
 }

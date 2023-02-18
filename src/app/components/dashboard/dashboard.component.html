@@ -4,6 +4,183 @@
     <!-- 
         Añadir tarjetas con pedidos realizados y pedidos pendientes    
     -->
+    <div class="cards">
+ <!-- Dia 28-->
+    <div class="card" style="width: 18rem;">
+      <div class="card-body">
+        <h5 class="card-title">Pedidos para el día 28/10</h5>
+        <p class="card-text"></p>
+        <div>{{numPedidosDay28.length}}</div>
+        <a href="#" class="btn btn-primary">Ver pedidos del 28</a>
+      </div>
+    </div>
+    <!------------->
+        <!-- Dia 29-->
+        <div class="card" style="width: 18rem;">
+          <div class="card-body">
+            <h5 class="card-title">Pedidos para el día 29/10</h5>
+            <p class="card-text"></p>
+            <div>{{numPedidosDay29.length}}</div>
+
+            <a href="#" class="btn btn-primary">Ver pedidos del 29</a>
+          </div>
+        </div>
+        <!------------->
+            <!-- Dia 30-->
+    <div class="card" style="width: 18rem;">
+      <div class="card-body">
+        <h5 class="card-title">Pedidos para el día 30/10</h5>
+        <p class="card-text"></p>
+        <div>{{numPedidosDay30.length}}</div>
+
+        <a href="#" class="btn btn-primary">Ver pedidos del 30</a>
+      </div>
+    </div>
+    <!------------->
+        <!-- Dia 31-->
+        <div class="card" style="width: 18rem;">
+          <div class="card-body">
+            <h5 class="card-title">Pedidos para el día 31/10</h5>
+            <p class="card-text"></p>
+            <div>{{numPedidosDay31.length}}</div>
+
+            <a href="#" class="btn btn-primary">Ver pedidos del 31</a>
+          </div>
+        </div>
+        <!------------->
+            <!-- Dia 1-->
+    <div class="card" style="width: 18rem;">
+      <div class="card-body">
+        <h5 class="card-title">Pedidos para el día 01/11</h5>
+        <p class="card-text"></p>
+        <div>{{numPedidosDay1.length}}</div>
+
+        <a href="#" class="btn btn-primary">Ver pedidos del 1</a>
+      </div>
+    </div>
+    <!------------->
+    </div>
+   
 </div>
 
-<a class="btn btn-success add_product" routerLink="nuevo-pedido">Crear nuevo pedido</a>
+<a class="btn btn-success add_product" data-bs-toggle="modal" data-bs-target="#firstModal">Crear nuevo pedido</a>
+
+<!-- Modal -->
+<div class="modal fade" id="firstModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="firstModal" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="modal-title fs-5" id="firstModal">Nuevo pedido</h1>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+            <app-days></app-days>
+        </div>
+        <div class="modal-footer">
+            <button *ngIf="day_selected != undefined" class="btn btn-primary" data-bs-target="#modalClientes" data-bs-toggle="modal">Siguiente</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+ <!-- Modal 2 - Clientes--> 
+ <div class="modal fade" id="modalClientes" data-bs-backdrop="static" data-bs-keyboard="false" aria-hidden="true" aria-labelledby="modalClientes" tabindex="-1">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="modal-title fs-5" id="modalClientes">Cliente</h1>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+            <app-client></app-client>
+        </div>
+        <div class="modal-footer">
+          <button class="btn btn-secondary" data-bs-target="#firstModal" data-bs-toggle="modal">Atrás</button>
+          <button *ngIf="client_selected != undefined" class="btn btn-primary" data-bs-target="#modalWorks" data-bs-toggle="modal">Siguiente</button>
+
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!--Modal 3 - Works-->
+  <div class="modal fade" id="modalWorks" data-bs-backdrop="static" data-bs-keyboard="false" aria-hidden="true" aria-labelledby="modalWorks" tabindex="-1">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="modal-title fs-5" id="modalWorks">Trabajo</h1>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+            <app-works></app-works>
+        </div>
+        <div class="modal-footer">
+          <button class="btn btn-secondary" data-bs-target="#modalClientes" data-bs-toggle="modal">Atrás</button>
+          <button *ngIf="options" class="btn btn-primary" data-bs-target="#modalOptions" data-bs-toggle="modal">Siguiente</button>
+          <button *ngIf="!options && products" class="btn btn-primary" data-bs-target="#modalProducts" data-bs-toggle="modal">Siguiente</button>
+          <button *ngIf="!options && !products" class="btn btn-primary" data-bs-target="#modalQuantities" data-bs-toggle="modal">Siguiente</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+    <!--Modal 3 - options-->
+    <div class="modal fade" id="modalOptions" data-bs-backdrop="static" data-bs-keyboard="false" aria-hidden="true" aria-labelledby="modalProductos" tabindex="-1">
+        <div class="modal-dialog modal-dialog-centered">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h1 class="modal-title fs-5" id="modalOptions">Trabajo</h1>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <app-options></app-options>
+            </div>
+            <div class="modal-footer">
+              <button class="btn btn-secondary" data-bs-target="#modalWorks" data-bs-toggle="modal">Atrás</button>
+              <button *ngIf="products" class="btn btn-primary" data-bs-target="#modalProducts" data-bs-toggle="modal">Siguiente</button>
+              <button *ngIf="!products" class="btn btn-primary" data-bs-target="#modalQuantities" data-bs-toggle="modal">Siguiente</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    <!--Modal 3 - productos-->
+    <div class="modal fade" id="modalProducts" data-bs-backdrop="static" data-bs-keyboard="false" aria-hidden="true" aria-labelledby="modalProducts" tabindex="-1">
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h1 class="modal-title fs-5" id="modalProducts">Trabajo</h1>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+              <app-products></app-products>
+          </div>
+          <div class="modal-footer">
+            <button *ngIf="options" class="btn btn-secondary" data-bs-target="#modalOptions" data-bs-toggle="modal">Atrás</button>
+            <button *ngIf="!options" class="btn btn-secondary" data-bs-target="#modalWorks" data-bs-toggle="modal">Atrás</button>
+            <button class="btn btn-primary" data-bs-target="#modalQuantities" data-bs-toggle="modal">Siguiente</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+        <!--Modal 3 - Cantidades-->
+        <div class="modal fade" id="modalQuantities" data-bs-backdrop="static" data-bs-keyboard="false" aria-hidden="true" aria-labelledby="modalQuantities" tabindex="-1">
+          <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h1 class="modal-title fs-5" id="modalQuantities">Trabajo</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+              </div>
+              <div class="modal-body">
+                  <app-quantities></app-quantities>
+              </div>
+              <div class="modal-footer">
+                <button *ngIf="products" class="btn btn-secondary" data-bs-target="#modalProducts" data-bs-toggle="modal">Atrás</button>
+                <button *ngIf="!products && options" class="btn btn-secondary" data-bs-target="#modalOptions" data-bs-toggle="modal">Atrás</button>
+                <button *ngIf="!products && !options" class="btn btn-secondary" data-bs-target="#modalWorks" data-bs-toggle="modal">Atrás</button>
+                <button class="btn btn-success" data-bs-target="#exampleModalToggle" data-bs-toggle="modal" (click)="confirmOrder()">Confirmar pedido</button>
+              </div>
+            </div>
+          </div>
+        </div>

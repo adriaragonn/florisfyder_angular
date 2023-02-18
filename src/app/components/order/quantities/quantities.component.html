@@ -1,7 +1,7 @@
 <div class="options">
     <div *ngIf="quantities" class="ifQuantities">
         <div *ngFor="let quantity of quantities" class="option" >
-            <div class="option-title btn btn-info" (click)="addQuantity(quantity.quantity)">
+            <div class="option-title btn btn-info qy{{quantity.id}}" (click)="addQuantity(quantity.quantity, quantity.id)">
                 {{quantity.quantity}}
             </div>
         </div>
@@ -11,8 +11,5 @@
             <input type="number" class="form-control" [(ngModel)]="order_quantity" id="quantity" placeholder="Introduce una cantidad">
             <label for="quantity">Introduce una cantidad</label>
         </div>
-    </div>
-    <div class="btn-next" *ngIf="order_quantity != 0 && order_quantity != null">
-        <a class="btn btn-info" (click)="viewOrderResume()">Confirmar pedido</a>
     </div>
 </div>

@@ -1,3 +1,6 @@
 <div class="btn-days">
-  <button type="button" class="btn btn{{day.id}} btn-info" *ngFor="let day of days" (click)="selectDay(day.id, day.date)"><span>{{day.date | date:  'dd/MM/yyy'}}</span></button>
+  <p>Escoge el día:</p>
+  <div class="btn-day">
+    <button type="button" class="btn btn{{day.id}} btn-info" *ngFor="let day of days" (click)="selectDay(day.id, day.date)"><span>{{day.date | date:  'dd/MM/yyy'}}</span></button>
+  </div>
 </div>

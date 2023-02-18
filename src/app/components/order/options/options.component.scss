@@ -36,3 +36,16 @@
     }
 }
 
+select {
+    overflow: hidden;
+    border: 0px;
+}
+
+option:checked {
+    background-color: green;
+    margin: 5px 0 5px 0;
+    border-radius: 5px;
+    width: 70px;
+    color: white;
+}
+

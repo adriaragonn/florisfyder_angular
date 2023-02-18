@@ -11,11 +11,7 @@ import { WorksComponent } from './components/order/works/works.component';
 const routes: Routes = [
   {
     path: '',
-    component: DashboardComponent
-  },
-  {
-    path: 'nuevo-pedido',
-    component: OrderComponent,
+    component: DashboardComponent,
     children: [
       {
         path: '',

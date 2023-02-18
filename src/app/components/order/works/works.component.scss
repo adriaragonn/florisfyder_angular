@@ -1,8 +1,9 @@
 .works {
     display: flex;
-    justify-content: space-between;
+    flex-wrap: wrap;
+    justify-content: space-around;
 
     .btn {
-        border-radius: 0;
+        margin: .2rem;
     }
 }

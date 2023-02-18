@@ -1,24 +1,29 @@
 <div class="clients">
-    <div class="inputs-client">
-        <form [formGroup]="client">
-            <div class="form-floating mb-3 input-client">
-                <input type="text" class="form-control" id="floatingName" placeholder="Nombre" formControlName="name" (keyup)="searchClient('name')">
-                <label for="floatingName">Nombre</label>
-              </div>
-            <div class="form-floating input-client">
-                <input type="number" class="form-control" id="floatingTel" placeholder="Teléfono" formControlName="telephone" (keyup)="searchClient('tel')">
-                <label for="floatingTel">Teléfono</label>
-            </div>
-        </form>
-    </div>
-    <div class="search-inline">
-        <select class="form-select" aria-label="Default select example" [(ngModel)]="clientId" (change)="newClient('selected')">
-        <option selected>Buscar o crear</option>
-        <option *ngFor="let client of clientSearched" [attr.value]="client.id" >{{client.name}}</option>
-        </select>
-        <div class="new-client" *ngIf="client.value.name != ''">
-            <a class="btn btn-info" (click)="newClient('new_')">Nuevo cliente</a>
+    <div class="buttons">
+        <div class="input-group mb-3">
+            <span class="input-group-text"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
+                <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"/>
+              </svg></span>
+              <input type="text" class="form-control" [(ngModel)]="wordToSearch" (keyup)="searchClient()">
         </div>
-    </div>
-</div>
 
+    </div>
+
+      <div class="list">
+        <div><span *ngIf="message != ''">{{message}}</span></div>
+        <div *ngIf="message != ''">
+            <form [formGroup]="client" >
+                <input class="form-control input-form" formControlName="name" type="text" placeholder="Nombre" aria-label="input para el nombre" required>
+                <input class="form-control input-form" formControlName="telephone" type="number" maxlength="12" minlength="9" placeholder="Teléfono" aria-label="input para el teléfono" required>
+            </form>
+            <button class="btn btn-success" *ngIf="client.status == 'VALID'" (click)="newClient()">Nuevo cliente</button>
+        </div>
+        <div *ngIf="load" class="spinner-grow" role="status">
+            <span class="visually-hidden">Loading...</span>
+          </div>
+        <ul class="list-group">
+            <li class="list-group-item client{{client.id}}" *ngFor="let client of clientSearched" (click)="clientSelected(client.id, client.name, client.telephone)">{{client.name}} -  {{client.telephone}}</li>
+          </ul>
+      </div>
+
+</div>

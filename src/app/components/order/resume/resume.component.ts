@@ -21,7 +21,7 @@ export class ResumeComponent implements OnInit {
   ngOnInit(): void {
     //this._orderService.getOrder()
 
-    this.order = this._orderService.test
+    
     console.log(this.order)
 
     this._workService.getWorks().subscribe(

@@ -25,17 +25,22 @@ export class OptionsComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    let id:any = this._activatedRoute.snapshot.paramMap.get('id')
-    this._workService.getOptions(id).subscribe(
-      (res:any) => {
-        if(res.data[0].options.length == 0){
-          this.addOption([],id)
-          this._router.navigateByUrl(`nuevo-pedido/(works:products/${id})`)
-        }else {
-          this.options = res.data[0].options
-        }
+    this._orderService.work_id_emit.subscribe(
+      hasId => {
+        this._workService.getOptions(hasId).subscribe(
+          (res:any) => {
+            if(res.data[0].options.length == 0){
+              this._orderService.options.emit(false)
+              this.addOption([],hasId)
+            }else {
+              this._orderService.options.emit(true)
+              this.options = res.data[0].options
+            }
+          }
+        )
       }
     )
+
   }
 
   hasOptions(id:any, sub_work: string, work: string){
@@ -66,41 +71,49 @@ export class OptionsComponent implements OnInit {
     this._orderService.addOption(options, work_id, this.options_resume)
   }
 
-  nextStep(){
-    
-    let id:any = this._activatedRoute.snapshot.paramMap.get('id')
-    this.addOption(this.order_options, id)
-    this._router.navigateByUrl(`nuevo-pedido/(works:products/${id})`)
-  }
 
-  selectedOptions(option:any){
-    let work:any = this.options.filter((el:any) => el.work == option.work)[0];
-  
-    work.options.forEach((el:any)=> {
-      if(el.options.length > 0){
+  selectedOptions(option: any){
+    let work: any = this.options.filter((el:any) => el.work == option.work)[0]
+    
+    for(let i = 0; work.options.length > i; i++){
+      if(work.options[i].length > 0){
         this.addOrderOption(option)
-        el.options.forEach((element: any) => {
-          if(element.id == option.id){
-            document.querySelector(`.btn-rama-${element.id}`)?.classList.remove('btn-info', 'transparency')
-            document.querySelector(`.btn-rama-${element.id}`)?.classList.add('btn-success')
-          }
-        })
-      }else if(el.id == option.id){
-        document.querySelector(`.sub-option-${el.id}`)?.classList.remove('btn-info', 'transparency')
-        document.querySelector(`.sub-option-${el.id}`)?.classList.add('btn-success')
-        this.addOrderOption(option)
-      }else{
-        document.querySelector(`.sub-option-${el.id}`)?.classList.add('transparency')
+        if(work.options[i].id == option.id){
+          document.querySelector(`.btn-rama-${work.options[i].id}`)?.classList.remove('btn-info', 'transparency')
+          document.querySelector(`.btn-rama-${work.options[i].id}`)?.classList.add('btn-success')
+        }
+      }else if(work.options[i].id == option.id){
+        document.querySelector(`.sub-option-${work.options[i].id}`)?.classList.remove('btn-info', 'transparency')
+        document.querySelector(`.sub-option-${work.options[i].id}`)?.classList.add('btn-success')
+      }else {
+        document.querySelector(`.sub-option-${work.options[i].id}`)?.classList.add('transparency')
       }
-    });
+    }
   }
 
   addOrderOption(option:any ){
     let work = this.options.filter((el: any) => el.work == option.work)[0].options
     if(this.order_options.length == 0){
       this.order_options.push(option.id)
-      this.options_resume.push(option)
     }else if(this.order_options.length > 0 ){
+
+      for(let i = 0; work.length > 0; i++){
+        if(this.order_options.includes(work[i].id)){
+          this.order_options = this.order_options.filter((elem: any) => elem != work[i].id)
+        }else if(work[i].options.length > 0){
+          for(let j = 0; work[i].options.length > 0; j++){
+            if(this.order_options.includes(work[i].options[j].id)){
+              this.order_options = this.order_options.filter((id: any) => id != work[i].options[j].id)
+            }
+          }
+        }
+      }
+      this.order_options.push(option.id)
+      if(this.order_options.length == this.options.length){
+        this.addOption(this.order_options)
+      }
+    }
+/*
       work.forEach((el: any) => {
         if(this.order_options.includes(el.id)){
           this.order_options = this.order_options.filter((elem:any) => elem != el.id)
@@ -113,8 +126,11 @@ export class OptionsComponent implements OnInit {
         }
       });
       this.order_options.push(option.id)
-      this.options_resume.push(option)
     }
+
+    if(this.order_options.length == this.options.length){
+      this.addOption(this.order_options)
+    }*/
   }
 
 }

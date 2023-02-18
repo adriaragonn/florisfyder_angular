@@ -22,30 +22,38 @@ export class QuantitiesComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    let id = this._route.snapshot.paramMap.get('id')
-    this._workService.getQuantities(id).subscribe(
-      (res: any) => {
-        if(res.data.length == 0){
-          this.notQuantities = true;
-        }else{
-          this.quantities = res.data
-        }
+    this._orderService.work_id_emit.subscribe(
+      hasId => {
+        this._workService.getQuantities(hasId).subscribe(
+          (res: any) => {
+            this.quantities = []
+            if(res.data.length == 0){
+              this._orderService.quantities.emit(false);
+              this.notQuantities = true
+            }else{
+              this._orderService.quantities.emit(true);
+              this.quantities = res.data
+            }
+          }
+        )
       }
     )
   }
 
-  addQuantity(quantity: number){
+  addQuantity(quantity: number, id: any){
+    this.quantities.forEach((el: any) => {
+      if(el.id == id) {
+        document.getElementsByClassName(`qy${id}`)[0].classList.remove('btn-info', 'transparency')
+        document.getElementsByClassName(`qy${id}`)[0].classList.add('btn-success')
+      }else {
+        document.getElementsByClassName(`qy${el.id}`)[0].classList.add('btn-info', 'transparency')
+        document.getElementsByClassName(`qy${el.id}`)[0].classList.remove('btn-success')
+      }
+    })
     this.order_quantity = quantity;
+
+    this._orderService.addQuantity(quantity)
   }
 
-  viewOrderResume(){
-    this._orderService.addQuantity(this.order_quantity)
-    //this._router.navigate(['resume'])
-    this._orderService.confirmOrder().subscribe(
-      (res: any) => {
-        console.log(res)
-      }
-    )
-  }
 
 }

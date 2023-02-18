@@ -4,10 +4,7 @@
             {{product.product}}
         </div>
         <div class="colors">
-            <button class="colors-hidden colors-{{product.product}}" *ngFor="let colour of product.colors" [ngStyle]="{'background': colour.code, 'padding': '0.8rem', 'width': '1.8rem', 'border': '1px solid black', 'margin': '0.3rem'}" (click)="selectColour(product.id, colour.id)"></button>
+            <button id="color-{{colour.id}}-{{product.product}}" class="colors-hidden colors-{{product.product}} color{{colour.id}}" *ngFor="let colour of product.colors" [ngStyle]="{'background': colour.code, 'padding': '0.8rem', 'width': '1.8rem', 'border': '1px solid black', 'margin': '0.3rem'}" (click)="selectColour(product.id, colour.id)"></button>
         </div>
-    </div>
-    <div class="btn-next" *ngIf="option_selected == true">
-        <a class="btn btn-info" (click)="nextStep()">Siguiente paso</a>
     </div>
 </div>
