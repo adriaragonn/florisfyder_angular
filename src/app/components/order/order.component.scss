@@ -1,18 +1,13 @@
-.days_ {
-    margin-top: 1rem;
+
+
+table {
     text-align: center;
-}
-.cards-clients-days {
-    display: flex;
-    justify-content: space-between;
-    margin-top: 1rem;
 
-}
+    .td-actions {
+        display: flex;
+    }
 
-.client-card {
-    width: 100%;
-}
-
-.products {
-    padding-top: 2rem;
+    .spinner-grow {
+        text-align: center;
+    }
 }

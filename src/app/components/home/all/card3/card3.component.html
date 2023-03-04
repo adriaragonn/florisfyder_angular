@@ -1,0 +1,24 @@
+<div class="card_">
+    <div class="header">
+        <div class="options">
+            <i class="fa-solid fa-ellipsis-vertical"></i>
+        </div>
+        <div class="icon">
+            <i class="fa-regular fa-circle"></i>
+            <i class="fa-solid fa-euro-sign"></i>
+        </div>
+    </div>
+    <div class="stat" *ngIf="showBill">
+        {{totalAmount | currency: 'EUR' : 'symbol' : '2.2-2' : 'es'}}
+    </div>
+    <div class="stat" *ngIf="!showBill">
+        XX.xx
+    </div>
+    <div class="subtitle">
+        Ganancias totales.
+        <button class="button" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Ocultar/Mostrar ganancias totales" (click)="show()">
+            <i class="fa-solid fa-eye"></i>
+        </button>
+    </div>
+</div>
+

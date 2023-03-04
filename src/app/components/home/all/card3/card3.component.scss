@@ -1,0 +1,47 @@
+.card_ {
+    width: 25vw;
+    padding: 10px;
+    border: 0;
+    box-shadow: 7px 9px 20px -11px rgb(0 0 0 / 40%);
+    .header {
+        
+        .options {
+            float: right;
+        }
+        .options:hover {
+            cursor: pointer;
+        }
+        .icon {
+            .fa-euro-sign {
+                font-size: 25px;
+                transform: translate(-27px, -4px);
+            }
+            
+            .fa-circle {
+                font-size: 35px;
+            }
+        }
+    }
+
+    .stat {
+        font-size: 35px;
+        font-family: 'Shantell Sans', cursive;
+        font-weight: 600;
+    }
+
+    .subtitle{
+        font-size: 15px;
+        font-family: 'Shantell Sans', cursive;
+        font-weight: 400;
+    }
+
+    .button {
+        float: right;
+        background: none;
+        border: none;
+    }
+}
+
+.card_:hover {
+    box-shadow: 7px 9px 20px 0px rgb(0 0 0 / 40%);
+}

@@ -55,5 +55,8 @@ export class QuantitiesComponent implements OnInit {
     this._orderService.addQuantity(quantity)
   }
 
+  quantity(){
+    this._orderService.addQuantity(this.order_quantity)
+  }
 
 }

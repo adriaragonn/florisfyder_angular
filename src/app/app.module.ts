@@ -16,6 +16,13 @@ import { ProductsComponent } from './components/order/products/products.componen
 import { OptionsComponent } from './components/order/options/options.component';
 import { QuantitiesComponent } from './components/order/quantities/quantities.component';
 import { ResumeComponent } from './components/order/resume/resume.component';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { HomeComponent } from './components/home/home.component';
+import { AllComponent } from './components/home/all/all.component';
+import { Card1Component } from './components/home/all/card1/card1.component';
+import { Card2Component } from './components/home/all/card2/card2.component';
+import { Card3Component } from './components/home/all/card3/card3.component';
+import { ChartsComponent } from './components/home/all/charts/charts.component';
 
 @NgModule({
   declarations: [
@@ -30,14 +37,21 @@ import { ResumeComponent } from './components/order/resume/resume.component';
     ProductsComponent,
     OptionsComponent,
     QuantitiesComponent,
-    ResumeComponent
+    ResumeComponent,
+    HomeComponent,
+    AllComponent,
+    Card1Component,
+    Card2Component,
+    Card3Component,
+    ChartsComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    FontAwesomeModule
   ],
   providers: [],
   bootstrap: [AppComponent]

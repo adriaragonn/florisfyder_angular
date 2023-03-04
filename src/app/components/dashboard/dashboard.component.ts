@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { GenericService } from 'src/app/services/generic.service';
 import { OrderService } from 'src/app/services/order.service';
 
 interface order_card {
@@ -24,13 +26,15 @@ export class DashboardComponent implements OnInit {
   numPedidosDay30: any;
   numPedidosDay31: any;
   numPedidosDay1: any;
+  url?:string;
 
   constructor(
-    private _orderService: OrderService
+    private _orderService: OrderService,
+    private _genericService: GenericService,
+    private _router: Router
   ) { }
 
   ngOnInit(): void {
-    
     this._orderService.client_selected.subscribe(
       hasClient => {
         this.client_selected = hasClient
@@ -58,7 +62,6 @@ export class DashboardComponent implements OnInit {
       }
     )
 
-      this.getAllOrders()
   }
 
   confirmOrder(){

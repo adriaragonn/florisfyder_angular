@@ -8,7 +8,7 @@
     </div>
     <div *ngIf="notQuantities == true">
         <div class="form-floating mb-3">
-            <input type="number" class="form-control" [(ngModel)]="order_quantity" id="quantity" placeholder="Introduce una cantidad">
+            <input type="number" class="form-control" [(ngModel)]="order_quantity" id="quantity" placeholder="Introduce una cantidad" (keyup)="quantity()">
             <label for="quantity">Introduce una cantidad</label>
         </div>
     </div>

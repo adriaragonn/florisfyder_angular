@@ -1,0 +1,23 @@
+<!--<div class="row">
+    <div class="col">
+        <app-card1 quantityOfOrders="{{quantityOfOrders}}"></app-card1>
+    </div>
+    <div class="col">
+        <app-card2></app-card2>
+    </div>
+    <div class="col">
+      Column
+    </div>
+  </div>
+-->
+<div class="cards">
+    <app-card1 quantityOfOrders="{{quantityOfOrders}}"></app-card1>
+    <app-card2 pendingOrders="{{pendingOrders}}"></app-card2>
+    <app-card3 totalAmount="{{totalAmount}}"></app-card3>
+</div>
+<div class="charts">
+  <app-charts
+    quantityOfOrders="{{quantityOfOrders}}"  
+    pendingOrders="{{pendingOrders}}"
+  ></app-charts>
+</div>

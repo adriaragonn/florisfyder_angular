@@ -32,6 +32,7 @@ export class ClientComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    
   }
 
   closeModal(){

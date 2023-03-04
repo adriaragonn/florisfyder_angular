@@ -1,5 +1,5 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { Injectable } from '@angular/core';
+import { EventEmitter, Injectable, Output } from '@angular/core';
 import { GLOBAL } from '../global/global';
 
 @Injectable({
@@ -8,6 +8,9 @@ import { GLOBAL } from '../global/global';
 export class GenericService {
 
   url: string
+  @Output() url_component: EventEmitter<any> = new EventEmitter
+  container: boolean = false;
+
 
   constructor(
     private _http: HttpClient

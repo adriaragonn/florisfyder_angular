@@ -1,0 +1,44 @@
+.card_ {
+    width: 25vw;
+    padding: 10px;
+    border: 0;
+    box-shadow: 7px 9px 20px -11px rgb(0 0 0 / 40%);
+    .header {
+        
+        .options {
+            float: right;
+        }
+        .options:hover {
+            cursor:pointer;
+        }
+        .icon {
+            .fa-cart-shopping {
+                font-size: 35px;
+            }
+            
+            .fa-circle-check {
+                font-size: 22px;
+                border: 3px solid white;
+                border-radius: 50%;
+                transform: translate(-20px, 4px);
+                background: white;
+            }
+        }
+    }
+
+    .stat {
+        font-size: 35px;
+        font-family: 'Shantell Sans', cursive;
+        font-weight: 600;
+    }
+
+    .subtitle{
+        font-size: 15px;
+        font-family: 'Shantell Sans', cursive;
+        font-weight: 400;
+    }
+}
+
+.card_:hover {
+    box-shadow: 7px 9px 20px 0px rgb(0 0 0 / 40%);
+}
