@@ -1,0 +1,67 @@
+.card_ {
+    width: 25vw;
+    height: 100%;
+    padding: 10px;
+    border: 0;
+    box-shadow: 7px 9px 20px -11px rgb(0 0 0 / 40%);
+    .header {
+        
+        .options {
+            float: right;
+        }
+        .options:hover {
+            cursor: pointer;
+        }
+        .icon {
+            .fa-cart-shopping {
+                font-size: 35px;
+            }
+            
+            .fa-note-sticky {
+                font-size: 22px;
+                border: 1px solid white;
+                border-radius: 4px;
+                transform: translate(-20px, 4px);
+                background: white;
+            }
+        }
+    }
+
+    .list {
+        height: 85%;
+        font-family: 'Shantell Sans', cursive;
+        font-weight: 400;
+        
+
+        span:first-child, span:last-child {
+            font-size: 12px;
+        }
+        
+        .list-group-item {
+            border-top: 0px;
+            border-left: 0px;
+            border-right: 0px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+    }
+
+    .subtitle{
+        font-size: 15px;
+        font-family: 'Shantell Sans', cursive;
+        font-weight: 400;
+        position: relative;
+        bottom: 0px;
+    }
+
+    .button {
+        float: right;
+        background: none;
+        border: none;
+    }
+}
+
+.card_:hover {
+    box-shadow: 7px 9px 20px 0px rgb(0 0 0 / 40%);
+}

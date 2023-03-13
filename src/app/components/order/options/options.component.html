@@ -19,7 +19,7 @@
             {{option.work}}
         </div>
         <select class="form-select" multiple name="{{option.work}}" id="{{option.work}}">
-            <option  value="{{work.work}}" *ngFor="let work of option.options">{{work.work}}</option>
+            <option  value="{{work.work}}" *ngFor="let work of option.options" (click)="addOrderOption(work.id)">{{work.work}}</option>
         </select>
     </div>
 </div>

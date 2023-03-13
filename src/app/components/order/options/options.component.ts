@@ -43,6 +43,17 @@ export class OptionsComponent implements OnInit {
 
   }
 
+  addOption(options?:any, work_id?: any){
+    this._orderService.addOption(options, work_id)
+  }
+
+  addOrderOption(work_id: any){
+    this.order_options.push(work_id)
+
+      this.addOption(this.order_options)
+  }
+
+/*
   hasOptions(id:any, sub_work: string, work: string){
     let work_div: any = document.querySelector(`.rama-${id}`)
     let option = {
@@ -67,17 +78,13 @@ export class OptionsComponent implements OnInit {
     )
   }
 
-  addOption(options?:any, work_id?: any){
-    this._orderService.addOption(options, work_id, this.options_resume)
-  }
-
 
   selectedOptions(option: any){
     let work: any = this.options.filter((el:any) => el.work == option.work)[0]
     
     for(let i = 0; work.options.length > i; i++){
+      this.addOrderOption(option)
       if(work.options[i].length > 0){
-        this.addOrderOption(option)
         if(work.options[i].id == option.id){
           document.querySelector(`.btn-rama-${work.options[i].id}`)?.classList.remove('btn-info', 'transparency')
           document.querySelector(`.btn-rama-${work.options[i].id}`)?.classList.add('btn-success')
@@ -93,11 +100,13 @@ export class OptionsComponent implements OnInit {
 
   addOrderOption(option:any ){
     let work = this.options.filter((el: any) => el.work == option.work)[0].options
+    console.log(work)
     if(this.order_options.length == 0){
       this.order_options.push(option.id)
     }else if(this.order_options.length > 0 ){
 
       for(let i = 0; work.length > 0; i++){
+        console.log(work[i].id)
         if(this.order_options.includes(work[i].id)){
           this.order_options = this.order_options.filter((elem: any) => elem != work[i].id)
         }else if(work[i].options.length > 0){
@@ -111,9 +120,13 @@ export class OptionsComponent implements OnInit {
       this.order_options.push(option.id)
       if(this.order_options.length == this.options.length){
         this.addOption(this.order_options)
+        console.log(this.order_options)
       }
+      console.log(this.order_options)
+      this.addOption(this.order_options)
+
     }
-/*
+
       work.forEach((el: any) => {
         if(this.order_options.includes(el.id)){
           this.order_options = this.order_options.filter((elem:any) => elem != el.id)
@@ -130,7 +143,7 @@ export class OptionsComponent implements OnInit {
 
     if(this.order_options.length == this.options.length){
       this.addOption(this.order_options)
-    }*/
-  }
+    }
+  }*/
 
 }

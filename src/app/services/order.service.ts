@@ -60,24 +60,7 @@ export class OrderService {
       quantity: undefined
     }
   };
-  resume: Order = {
-    'client': {
-      id: null,
-      name: '',
-      telephone: ''
-    },
-    'day': {
-      id: 0,
-      date: ''
-    },
-    'work': {
-      id: 0,
-      options: [],
-      product_id: undefined,
-      color_id: undefined,
-      quantity: undefined
-    }
-  };
+
 
 
   constructor(
@@ -117,12 +100,10 @@ export class OrderService {
     this.work_id_emit.emit(id)
   }
 
-  addOption(options_id?:any, work_id?: any, work?: any){
+  addOption(options_id?:any, work_id?: any){
     this.work = [];
     console.log(options_id)
     this.order.work.options = options_id
-
-
   }
 
   addColor(product_id: any, colour_id?:any){

@@ -1,0 +1,24 @@
+<div class="card_">
+    <div class="header">
+        <div class="options">
+            <i class="fa-solid fa-ellipsis-vertical"></i>
+        </div>
+        <div class="icon">
+            <i class="fa-solid fa-cart-shopping"></i>
+            <i class="fa-regular fa-note-sticky"></i>
+        </div>
+    </div>
+    <div class="list" *ngIf="orders != undefined">
+        <ul class="list-group" *ngFor="let order of orders">
+            <li class="list-group-item">
+                <span>{{order.key}} - </span>
+                <span>{{order.clientName}}</span>
+                <span>{{order.date}}</span>
+            </li>
+          </ul>
+    </div>
+    <div class="subtitle">
+        Últimos pedidos.
+    </div>
+</div>
+

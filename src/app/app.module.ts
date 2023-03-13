@@ -23,6 +23,7 @@ import { Card1Component } from './components/home/all/card1/card1.component';
 import { Card2Component } from './components/home/all/card2/card2.component';
 import { Card3Component } from './components/home/all/card3/card3.component';
 import { ChartsComponent } from './components/home/all/charts/charts.component';
+import { OrderlistComponent } from './components/home/all/orderlist/orderlist.component';
 
 @NgModule({
   declarations: [
@@ -43,7 +44,8 @@ import { ChartsComponent } from './components/home/all/charts/charts.component';
     Card1Component,
     Card2Component,
     Card3Component,
-    ChartsComponent
+    ChartsComponent,
+    OrderlistComponent
   ],
   imports: [
     BrowserModule,
